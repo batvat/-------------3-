@@ -1,0 +1,23 @@
+.relo {
+    position: relative;
+}
+
+.close {
+    position:absolute;
+    right: -10px;
+    top: -15px;
+    font-family: "Architects Daughter", cursive;
+    font-size: 45px;
+    padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 30px;
+}
+
+.none {
+    font-size: 40px;
+}
+
+textarea {
+    resize: none;
+}
