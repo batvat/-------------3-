@@ -88,4 +88,3 @@ function delete_keep(index) {
     localStorage.setItem('keeps', JSON.stringify(keeps_array))
     render_keep();
 }
-
