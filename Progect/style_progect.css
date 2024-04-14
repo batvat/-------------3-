@@ -1,0 +1,41 @@
+.all {
+    display: flex;
+    justify-content: center;
+    margin: 10% 0 ;
+    
+}
+
+.new_game_div {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    gap: 5px;
+    margin: 5px 5px 5px 5px;
+    padding: 5px;
+}
+
+.button_scene1 {
+    width: 200px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    text-align: center;
+    font-size: 100px;
+    line-height: 100%;
+    user-select: none;
+    
+    font-family: "Architects Daughter", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.map_div {
+    display: grid;
+    grid-template-rows: repeat(3, 100px);
+    grid-gap: 2px;
+}
