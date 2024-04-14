@@ -1,6 +1,6 @@
 'use strict'
 
-let board = [0,0,0,0,0,0,0,0,0];
+let board = [1,0,0,0,0,0,0,0,0,0];
 let player = 1;
 let winner;
 
@@ -11,7 +11,7 @@ function checkWin() {
     for (let i = 0; i < board.length; i++) {if (board[i] === 0) zeroNums++}
     if (zeroNums === 0 ) winner = 'Достойная ничья'
 
-    let p1, p2,p3;
+    let p1,p2,p3;
     for (let indexes of COMBO) {
         [p1,p2,p3] = indexes
         if (board[p1] === 1 && board[p2] === 1 && board[p3] === 1) {
