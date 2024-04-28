@@ -1,3 +1,8 @@
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
+
 //сцена 1 начать игру
 let new_div = document.getElementById('new_div')
 
@@ -15,16 +20,38 @@ new_div.insertAdjacentHTML('afterbegin', newgame_template)
 //сцена 2 карта игры
 
 let newgame = document.getElementById("newgame")
-    map = [0,'pl10.png','pl2.png','pl3.png','pl4.png',0,'blue1.png.160x120r.png','pl5.png','pl6.png','pl7.png','pl8.png','blue1.png.160x120r.png',0,'pl9.png','pl10.png','pl11.png','pl12.png',0]
+    map = [0,'map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png',0,'blue1.png.160x120r.png','map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png',0,'map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png',0]
 newgame.onclick = () => {
-    console.log('if выполнился')
+
     new_div.innerHTML = ''
     render_map(map)
 }
 
 
+function getRandom(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    let a = Math.floor(     Math.random() * (max - min) + min); 
+    return a 
+    
+  }
+
+function draw(a1,b1,a2,b2) {
+    console.log(a1,b1,b2,a2)
+    let canvas = document.getElementById('graph');
+    let ctx = canvas.getContext('2d');
+    
+    ctx.beginPath();
+    ctx.moveTo(a1,b1);
+    ctx.lineTo(a2,b2);
+    ctx.strokeStyle = '#1a2edb'
+    ctx.stroke();
+}
 
 function render_map(map) {
+    const canvas_template = `
+    <canvas class="can" id="graph"></canvas>`;
+    new_div.insertAdjacentHTML('afterbegin', canvas_template)
     const map_template = `
     <div class="map_div" id="map_div"></div>`;
     new_div.insertAdjacentHTML('afterbegin', map_template)
@@ -34,17 +61,21 @@ function render_map(map) {
     let cell, cell_obj;
     for (let i = 0; i != map.length;i++) {
         cell = map[i];
-        console.log('a')
+
         cell_obj = document.createElement('div');
         if (map[i] != 0){
             img_obj1 = document.createElement('img');
             img_obj1.src = map[i]
-            cell_obj.appendChild(img_obj1)
-            if (i != 16 && i != 4 && i != 11) {
-                img_obj2 = document.createElement('img');
-                img_obj2.src = 'strela.png'
-                cell_obj.appendChild(img_obj2)
-            }
+            img_obj1.classList.add('abs')
+
+            if (Math.random() > 0.5) 
+                {img_obj1.style.top =`${getRandom(0,100)}px`}
+            else 
+                {img_obj1.style.bottom =`${getRandom(0,100)}px`}
+
+                img_obj1.style.right=`${getRandom(0,100)}px`
+                cell_obj.appendChild(img_obj1)
+                
         }
         if (i != 0 && i != 5 && i != 12 && i!=17){
             cell_obj.classList.add('cell')
@@ -52,7 +83,18 @@ function render_map(map) {
 
             }
         }
-        
+        let m = []
         map_obj.appendChild(cell_obj)
+        for (let elem of map_obj.childNodes) {
+            let rect = elem.getBoundingClientRect();
+            let x = rect.left;
+            let y = rect.top;
+                m.push(x)
+                m.push(y)
+            if (m.length == 4) {
+                draw(m[0], m[1], m[2],m[3])
+                m = []
+            }
+        }
     }
-}   
+}

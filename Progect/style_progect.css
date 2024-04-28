@@ -43,10 +43,24 @@
     font-family: "Architects Daughter", cursive;
     font-weight: 400;
     font-style: normal;
+
+    position: relative;
 }
 
 .map_div {
     display: grid;
     grid-template-columns: repeat(6, 200px);
     grid-gap: 2px;
+    position: relative;
+}
+
+.abs {
+    position: absolute;
+}
+
+.can {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    
 }
