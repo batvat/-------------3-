@@ -61,7 +61,7 @@ function render_map(map) {
             img_box = document.createElement('div');
             img_box.classList.add("abs")
             img_box1 = document.createElement('div');
-            img_box1.classList.add("absasd")
+            img_box1.classList.add("abs")
             img_obj1 = document.createElement('img');
             img_obj1.src = map[i]
             img_obj1.classList.add('abs-img')
