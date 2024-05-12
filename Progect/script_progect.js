@@ -20,9 +20,9 @@ new_div.insertAdjacentHTML('afterbegin', newgame_template)
 //сцена 2 карта игры
 
 let newgame = document.getElementById("newgame")
-    map = [0,'map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png',0,'map_icon2.png','map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png',0,'map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png',0]
-newgame.onclick = () => {
+    map = ['map_icon2.png','map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png','map_icon1.png']
 
+    newgame.onclick = () => {
     new_div.innerHTML = ''
     render_map(map)
 }
@@ -41,9 +41,6 @@ function getRandom(min, max) {
 
 
 function render_map(map) {
-    const canvas_template = `
-    <canvas class="can" width="${window.innerWidth}" height="${window.innerHeight}" id="graph"></canvas>`;
-    new_div.insertAdjacentHTML('afterbegin', canvas_template)
     const map_template = `
     <div class="map_div" id="map_div"></div>`;
     new_div.insertAdjacentHTML('afterbegin', map_template)
@@ -52,7 +49,7 @@ function render_map(map) {
 
     const map_obj = document.getElementById('map_div');
     map_div.innerHTML = '';
-    let cell, cell_obj;
+    let cell_obj;
     for (let i = 0; i != map.length;i++) {
         cell = map[i];
 
@@ -76,40 +73,99 @@ function render_map(map) {
                 cell_obj.appendChild(img_box1)
                 
         }
-        if (i != 0 && i != 5 && i != 12 && i!=17){
-            cell_obj.classList.add('cell')
+        cell_obj.classList.add('cell')
             if (i == 6) {
 
             }
-        }
+        
         map_obj.appendChild(cell_obj)
     }
-
-
-//     let canvas = document.getElementById('graph');
-//     let ctx = canvas.getContext('2d');
-//     ctx.strokeStyle = 'white'
-//     ctx.lineWidth = '1'
-//     ctx.beginPath();
-
-//     let m = [];
-//     let i = -1;
-//     for (let elem of map_obj.childNodes) {
-//         if (elem.firstChild) {
-//             let rect = elem.firstChild.getBoundingClientRect();
-//             let x = rect.right;
-//             let y = rect.top + 15;
-
-//             m.push([x, y])
-//             i++;
-//             console.log(m)
-//             console.log(m[i])
-//             if (m.length == 1) {
-//                 ctx.moveTo(...m[i]);
-//             } else if (m.length >= 2) {
-//                 ctx.lineTo(...m[i]);
-//             }
-//         }
-//     }
-//     ctx.stroke();
+    button_obj = document.createElement('div')
+    button_o = document.createElement('button')
+    document.button_o.innerHTML = 'текстфывофытвофывофывьффшыфвшфышвшфы'
+    button_obj.appendChild(button_o)
+    new_div.appendChild(button_obj)
 }
+    //3 игра
+
+
+function fight_enemy_random() {
+    let a = getRandomInt(5); 
+    if (a == 2) {
+        return 'камень'
+    } 
+    if (a == 3) {
+        return 'бумага'
+    } 
+    if (a == 1) {
+        return 'ящерица'
+    } 
+    if (a == 0) {
+        return 'спок'
+    } 
+    if (a == 4) {
+        return 'ножницы'
+    } 
+}
+
+function results(player) {
+    enemy = fight_enemy_random()
+    if (enemy == player){
+        return 'ничья'
+    }
+    if (enemy == 'камень')
+        if (player == 'ножницы' || player == 'ящерица')
+            return 'поражение'
+        else {
+            return 'победа'
+        }
+    if (enemy == 'ногжницы')
+        if (player == 'бумага' || player == 'ящерица')
+            return 'поражение'
+        else {
+            return 'победа'
+        }
+    if (enemy == 'бумага')
+        if (player == 'камень' || player == 'спок')
+            return 'поражение'
+        else {
+            return 'победа'
+        }
+    if (enemy == 'ящерица')
+        if (player == 'бумага' || player == 'спок')
+            return 'поражение'
+        else {
+            return 'победа'
+        }
+    if (enemy == 'спок')
+        if (player == 'камень' || player == 'ножницы')
+            return 'поражение'
+        else {
+            return 'победа'
+        }
+}
+
+function fight() {
+    new_div.innerHTML = ''
+    const fight = `
+    <div class="fight_div">
+        <div class = 'arts' id = 'arts'></div>
+        <div class = 'center' id = 'center' >  
+            <div class = 'hp' id = 'hp'></div>
+            <div class = 'enemy' id = 'enemy'></div>
+            <div class = 'enemy_hp' id = 'enemy_hp'></div>
+        </div>
+        <div class = 'moves' id = 'moves'>
+            <div class = 'move'><button id = 'rock'>'камень'</button></div>
+            <div class = 'move'><button id = 'scissors'>'ножницы'</button></div>
+            <div class = 'move'><button id = 'papper'>'бумага'</button></div>
+            <div class = 'move'><button id = 'spock'>'спок'</button></div>
+            <div class = 'move'><button id = 'lizard'>'ящерица'</button></div>
+        </div>
+    </div>`;
+    new_div.insertAdjacentHTML('afterbegin', fight)
+
+}
+
+
+
