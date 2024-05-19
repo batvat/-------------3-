@@ -1,19 +1,29 @@
 * {
+    
+    
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
+    
+    
 }
 
 body {
-    background-color: black;
+    width: 100%;
+    height: 100%;
+    z-index: -20;
+    /* background-image: url('fon.jpeg'); */
+    background-repeat: no-repeat;
 }
 
 .all {
+    
     display: flex;
-
+    
     margin-left:  20px ;
     color: rgb(181, 214, 243);
+    
+    
 }
 
 .new_game_div {
@@ -76,4 +86,23 @@ body {
     width: 100%;
     height: 700px;
     
+}
+
+.button1 {
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+}
+
+.div1 {
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    right: 50%;
+    bottom: 50%;
+}
+
+.fight_div {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
 }
