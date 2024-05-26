@@ -100,7 +100,7 @@ function render_map(map) {
   button_o.onclick = (event) => {
   if (map[i] === "map_icon1.png") {
     i+=1
-    fight()} 
+    fight(10,5)} 
   if (map[i] === "map_icon2.png") {
     i+=1
     // потом
@@ -164,22 +164,26 @@ function results(player) {
 }
 
 
-function fight() {
+function fight(player_hp, enemy_hp) {
+    
+    let max_enemy_hp = enemy_hp
+    let max_player_hp = player_hp
     new_div.innerHTML = ''
     const fight = `
     <div class="fight_div">
         <div class = 'arts' id = 'arts'></div>
         <div class = 'center' id = 'center' >  
-            <div class = 'hp' id = 'hp'>123</div>
-            <div class = 'enemy' id = 'enemy'>1234</div>
-            <div class = 'enemy_hp' id = 'enemy_hp'>12345</div>
+            <div class = 'hp' id = 'hp'><div class = "number_hp">${enemy_hp}/${max_enemy_hp}</div></div>
+            <div class = 'enemy' id = 'enemy'><img src="Enemy.png" alt=""></div>
+            <div class = 'enemy_hp' id = 'enemy_hp'><div class = "number_hp">${player_hp}/${max_player_hp}</div></div>
+            <div class = 'next'><button class = "button2" id = "next">Следующий ход</button></div>
         </div>
         <div class = 'moves' id = 'moves'>
-            <div class = 'move'><button id = 'rock'>камень</button></div>
-            <div class = 'move'><button id = 'scissors'>ножницы</button></div>
-            <div class = 'move'><button id = 'papper'>бумага</button></div>
-            <div class = 'move'><button id = 'spock'>спок</button></div>
-            <div class = 'move'><button id = 'lizard'>ящерица</button></div>
+            <div class = 'move'><button class = "button2" id = 'rock'><img src="stone.png" alt=""></button></div>
+            <div class = 'move'><button class = "button2" id = 'scissors'><img src="scissors.png" alt=""></button></div>
+            <div class = 'move'><button class = "button2" id = 'papper'><img src="images.png" alt=""></button></div>
+            <div class = 'move'><button class = "button2" id = 'spock'><img src="spoke.png" alt=""></button></div>
+            <div class = 'move'><button class = "button2" id = 'lizard'><img src="reptil.png" alt=""></button></div>
         </div>
     </div>`;
     new_div.insertAdjacentHTML('afterbegin', fight)
